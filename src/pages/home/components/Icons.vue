@@ -1,31 +1,18 @@
 <template>
   <div class="icons">
     <swiper>
-      <swiper-slide>
-        <div class="icon">
+      <swiper-slide v-for="(page,index) of pages" :key="index">
+        <div class="icon" v-for="item of page" :key="item.id">
           <div class="icon-img">
-            <img
-              class="icon-img-content"
-              src="http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png"
-            />
+            <img class="icon-img-content" :src="item.imgUrl" />
           </div>
-          <p class="icon-desc">热门景点</p>
-        </div>
-      </swiper-slide>
-      <swiper-slide>
-        <div class="icon">
-          <div class="icon-img">
-            <img
-              class="icon-img-content"
-              src="http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png"
-            />
-          </div>
-          <p class="icon-desc">热门景点</p>
+          <p class="icon-desc">{{item.desc}}</p>
         </div>
       </swiper-slide>
     </swiper>
   </div>
 </template>
+
 <script>
 export default {
   name: "HomeIcons",
@@ -45,25 +32,69 @@ export default {
           desc: "动植物园"
         },
         {
-          d: "0001",
+          d: "0003",
           imgUrl:
-            "http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png",
-          desc: "景点门票"
+            "http://mp-piao-admincp.qunarzz.com/mp_piao_admin_mp_piao_admin/admin/20194/3ef092d0a89ffddb7f781cda30c8ae49.png",
+          desc: "国庆大促"
         },
         {
-          d: "0001",
+          d: "0004",
           imgUrl:
-            "http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png",
-          desc: "景点门票"
+            "http://img1.qunarzz.com/piao/fusion/1803/f5/c4c9d9830404e602.png",
+          desc: "室内娱乐"
+        },
+        {
+          d: "0005",
+          imgUrl:
+            "http://img1.qunarzz.com/piao/fusion/1804/5a/13ceb38dcf262f02.png",
+          desc: "一日游"
+        },
+        {
+          d: "0006",
+          imgUrl:
+            "http://img1.qunarzz.com/piao/fusion/1803/3e/86314b2af03b7502.png",
+          desc: "黄浦江游船"
+        },
+        {
+          d: "0007",
+          imgUrl:
+            "http://img1.qunarzz.com/piao/fusion/1803/47/c2b659e048b11602.png",
+          desc: "野生动物园"
+        },
+        {
+          d: "0008",
+          imgUrl:
+            "http://img1.qunarzz.com/piao/fusion/1803/de/f26be47a6bf02a02.png",
+          desc: "上海迪士尼"
+        },
+        {
+          d: "0009",
+          imgUrl:
+            "http://img1.qunarzz.com/piao/fusion/1803/b6/37560ece9c62b502.png",
+          desc: "城市风光"
         }
       ]
     };
+  },
+  computed: {
+    pages() {
+      const pages = [];
+      this.iconList.forEach((item, index) => {
+        const page = Math.floor(index / 8);
+        if (!pages[page]) {
+          pages[page] = [];
+        }
+        pages[page].push(item);
+      });
+      return pages;
+    }
   }
 };
 </script>
 
 <style lang="stylus" scoped>
 @import '~styles/varibles.styl';
+@import '~styles/mixins.styl';
 
 .icons >>> .swiper-container {
   height: 0;
@@ -103,6 +134,7 @@ export default {
     line-height: 0.44rem;
     text-align: center;
     color: $darkTextColor;
+    ellipsis();
   }
 }
 </style>

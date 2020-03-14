@@ -3,7 +3,7 @@
         <div class="banner" @click="handleBannerClick">
             <img
                 class="banner-img"
-                src="//img1.qunarzz.com/sight/p0/1602/45/459bd3d00321a44790.water.jpg_600x330_81c878a2.jpg"
+                src="http://img1.qunarzz.com/sight/p0/1803/9d/9d862d8166170089a3.img.jpg_350x240_822366e0.jpg"
             />
             <div class="banner-info">
                 <div class="banner-title">景山公园(AAAA景区)</div>
